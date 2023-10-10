@@ -1,14 +1,15 @@
 .data
-vetor: .word 5 6 7 8 9
+vetor: .word 0 0 0 0
 
 .text
 la t2, vetor # endereço do vetor
-li t3, 5 # tamanho do vetor
+li t3, 4 # tamanho do vetor
 
 li a0, 0 # contador de pares
 li a1, 0 # contador de ímpares
 
 jal ra, contador
+li t6, 10
 beq x0, x0, FIM
 
 contador:
@@ -26,5 +27,7 @@ continuar:
     addi t3, t3, -1 # decrementa tamanho do vetor
     
     bnez t3, contador # se tamanho do vetor for diferente de 0, continua a contagem
+
+    jr ra
 
 FIM: addi x0, x0, 1
